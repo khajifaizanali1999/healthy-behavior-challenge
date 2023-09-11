@@ -13,8 +13,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and test
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7 # Specify your Ruby version
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install dependencies
         run: |
+          bundle install
           docker build -t fitxt .
           docker run fitxt bundle exec rspec # Replace with your test command
 
@@ -29,4 +38,4 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          build_dir: . # Path to the Dockerfile
+          build_dir: .
