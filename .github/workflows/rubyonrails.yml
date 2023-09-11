@@ -16,7 +16,7 @@ jobs:
       - name: Build and test
         run: |
           docker build -t fitxt .
-          docker run Dockerfile bundle exec rspec # Replace with your test command
+          docker run fitxt bundle exec rspec # Replace with your test command
 
   deploy:
     needs: build
