@@ -15,7 +15,7 @@ jobs:
 
       - name: Build and test
         run: |
-          docker build -t fitxt .
+          docker build -t fitxtd .
 
   deploy:
     needs: build
