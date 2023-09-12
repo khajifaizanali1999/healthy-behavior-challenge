@@ -28,7 +28,7 @@ jobs:
         run: docker images
         
       - name: Login to Docker Hub
-        run: docker login -u khajifaizanali@tamu.edu -p Faizankhaji@786
+        run: docker login -u *** -p ***
 
       - name: Push Docker image to registry
         run: docker tag fitxt khajifaizanali/fitxt
@@ -39,5 +39,5 @@ jobs:
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "fitxtd" #Must be unique in Heroku
-          heroku_email: "khajifaizanali@tamu.edu"
+          heroku_email: "****"
           stack: "container"
