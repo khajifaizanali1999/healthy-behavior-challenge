@@ -31,7 +31,9 @@ jobs:
         run: docker login -u khajifaizanali@tamu.edu -p Faizankhaji@786
 
       - name: Push Docker image to registry
-        run: docker push fitxt
+        run: docker tag fitxt khajifaizanali/fitxt
+      - name: Push Docker image to registry
+        run: docker push khajifaizanali/fitxt
 
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.5.6
