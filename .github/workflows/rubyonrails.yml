@@ -26,7 +26,7 @@ jobs:
         run: echo Faizankhaji@786 | docker login -u khajifaizanali@tamu.edu --password-stdin
 
       - name: Push Docker image to registry
-        run: docker push Dockerfile
+        run: docker push fitxtd
 
       - name: Deploy to Heroku
         run: |
