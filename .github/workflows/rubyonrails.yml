@@ -25,9 +25,9 @@ jobs:
       - name: Deploy to Heroku
         uses: akhileshns/heroku-deploy@v3.12.14
         with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_api_key: 9dcec779-ecf6-4b0b-966f-abfd3266448a
+          heroku_app_name: fitxtd
+          heroku_email: khajifaizanali@tamu.edu
           build_dir: . # Path to the Dockerfile
           usedocker: true
           branch: satyabhavsar
