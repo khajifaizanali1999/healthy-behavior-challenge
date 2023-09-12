@@ -31,3 +31,4 @@ jobs:
           build_dir: . # Path to the Dockerfile
           usedocker: true
           branch: satyabhavsar
+          stack: "container"
