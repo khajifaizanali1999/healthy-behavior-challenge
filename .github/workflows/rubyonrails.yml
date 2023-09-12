@@ -22,13 +22,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Login to Docker Hub (or another container registry)
+        run: echo Faizankhaji@786 | docker login -u khajifaizanali@tamu.edu --password-stdin
+
+      - name: Push Docker image to registry
+        run: docker push Dockerfile
+
       - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.14
-        with:
-          heroku_api_key: 9dcec779-ecf6-4b0b-966f-abfd3266448a
-          heroku_app_name: fitxtd
-          heroku_email: khajifaizanali@tamu.edu
-          build_dir: . # Path to the Dockerfile
-          usedocker: true
-          branch: satyabhavsar
-          stack: "container"
+        run: |
+          heroku container:login
+          heroku container:release web -a fitxtd
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
