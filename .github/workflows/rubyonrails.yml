@@ -3,7 +3,7 @@ name: CI/CD for Ruby on Rails
 on:
   push:
     branches:
-      - satyabhavsar
+      - main
 
 jobs:
   build:
@@ -15,22 +15,21 @@ jobs:
 
       - name: Build and test
         run: |
-          docker build -t fitxtd .
+          docker build -t fitxt .
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Login to Docker Hub (or another container registry)
-        run: echo Faizankhaji@786 | docker login -u khajifaizanali@tamu.edu --password-stdin
+      - name: Login to Docker Hub
+        run: docker login -u khajifaizanali@tamu.edu -p Faizankhaji@786
 
       - name: Push Docker image to registry
-        run: docker push fitxtd
+        run: docker push fitxt
 
       - name: Deploy to Heroku
-        run: |
-          heroku container:login
-          heroku container:release web -a fitxtd
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        uses: akhileshns/heroku-deploy@v3.5.6
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: fitxtd
