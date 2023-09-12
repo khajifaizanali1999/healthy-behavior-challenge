@@ -35,11 +35,9 @@ jobs:
       - name: Push Docker image to registry
         run: docker push khajifaizanali/fitxt
 
-      - name: Deploy to Heroku
-        run: |
-          heroku container:login
-          heroku container:release web -a fitxtd
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_USERNAME: khajifaizanali@tamu.edu
-          HEROKU_PASSWORD: Faizankhaji@786
+      - uses: akhileshns/heroku-deploy@v3.12.14 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "fitxtd" #Must be unique in Heroku
+          heroku_email: "khajifaizanali@tamu.edu"
+          stack: "container"
