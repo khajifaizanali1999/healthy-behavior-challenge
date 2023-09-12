@@ -40,4 +40,6 @@ jobs:
           heroku container:login
           heroku container:release web -a fitxtd
         env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_USERNAME: khajifaizanali@tamu.edu
+          HEROKU_PASSWORD: Faizankhaji@786
